@@ -11,11 +11,11 @@
 #### Usage
 
 To list all supported *server* command actions:
-* `$ ./bin/server [TAB][TAB]` (list all actions)
-* `$ ./bin/server c[TAB][TAB]` (complete to 'create')
+* `$ ./bin/server [TAB][TAB]` - list all actions
+* `$ ./bin/server c[TAB][TAB]` - complete to 'create' action
  
  
 To list all server instances (for all actions except 'create', 'version', and 'help'):
-* `$ ./bin/server start[TAB][TAB]` (lists all available server instances)
-* `$ ./bin/server start de[TAB][TAB]` (complete to 'defaultServer' instance)
- 
+* `$ ./bin/server start[TAB][TAB]` - list all available server instances
+* `$ ./bin/server start de[TAB][TAB]` - complete to 'defaultServer' instance (if it is there)
+
