@@ -1,9 +1,10 @@
-## Bash auto completion script for Liberty Profile `server` command
+## Bash auto completion script for Liberty profile `server` command
 
 ### Installation
 
-1. Download the *server* Bash auto completion script.
-2. Move the script into */etc/bash_completion.d/* directory.
+1. Download the *[server](https://raw.github.com/WASdev/util.bash.completion/master/server)* Bash auto completion script.
+2. On Ubuntu/Debian, move the script into */etc/bash_completion.d/* directory. On Windows/Cygwin, ensure the `bash-completion` package is installed first.
+
 
 ### Usage
 
