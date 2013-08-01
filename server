@@ -1,0 +1,73 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+_getAllServers() {
+  if [ -e "$WLP_HOME/java/java.env" ]
+  then
+    . "$WLP_HOME/java/java.env"
+  fi
+
+  if [ -e "$WLP_HOME/etc/default.env" ]
+  then
+    . "$WLP_HOME/etc/default.env"
+  fi
+
+  if [ -z "${WLP_USER_DIR}" ]
+  then
+    WLP_USER_DIR=${WLP_HOME}/usr
+  fi
+    
+  servers=""
+  if [ -e "$WLP_USER_DIR/servers" ]
+  then
+    server_dirs=`\ls $WLP_USER_DIR/servers`
+    for dir in $server_dirs; do
+      if [ -d $WLP_USER_DIR/servers/$dir ]; then 
+        servers="$servers $dir"
+      fi
+    done
+  fi
+
+  echo $servers   
+}
+
+_server() {
+
+    local cur prev opts
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    case "$prev" in
+        start|run|status|debug|dump|package|stop|javadump)
+            PRGDIR=`dirname "$1"`
+            WLP_HOME=`cd "$PRGDIR/.." && pwd`
+            all_servers=`_getAllServers`
+            COMPREPLY=( $(compgen -W "${all_servers}" -- ${cur}) ) 
+            return 0
+            ;;
+        help|version|create)
+            return 0
+            ;;
+    esac
+
+    if [[ ${cur} == * ]] ; then
+        opts="create debug dump help javadump package run start status stop version"
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+
+    return 0
+}
+
+complete -F _server server
