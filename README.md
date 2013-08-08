@@ -5,8 +5,8 @@
 #### Installation
 
 1. Download the *[server](https://raw.github.com/WASdev/util.bash.completion/master/server)* Bash auto completion script.
-2. On Ubuntu/Debian, move the script into */etc/bash_completion.d/* directory. On Windows/Cygwin, ensure the `bash-completion` package is installed first.
-
+2. On Ubuntu/Debian, move the script into */etc/bash_completion.d/* directory. On Windows with Cygwin, ensure the `bash-completion` package is installed first.
+3. Open a new terminal (or Cygwin) window for the new auto completion script to be loaded.
 
 #### Usage
 
