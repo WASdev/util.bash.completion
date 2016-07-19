@@ -19,3 +19,21 @@ To list all server instances (for all actions except 'create', 'version', and 'h
 * `$ ./bin/server start[TAB][TAB]` - list all available server instances
 * `$ ./bin/server start de[TAB][TAB]` - complete to 'defaultServer' instance (if it is there)
 
+###Auto completion script for *batchManager* command
+
+#### Installation
+
+1. Download the *[batchManager](https://raw.github.com/WASdev/util.bash.completion/master/batchManager)* Bash auto completion script.
+2. Follow previous installation instructions
+
+#### Usage
+
+To list all supported *batchManager* command actions:
+* `$ ./bin/batchManager [TAB][TAB]` - list all actions
+* `$ ./bin/batchManager su[TAB][TAB]` - complete to 'submit' action
+ 
+ 
+To list help for all batchManager commands:
+* `$ ./bin/batchManager help [TAB][TAB]` - list all actions
+* `$ ./bin/batchManager help su[TAB][TAB]` - list help for 'submit' action
+
