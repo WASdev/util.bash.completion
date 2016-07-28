@@ -10,12 +10,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_getAllJobs() {
+	
+    #job list feature pending
+    echo " "
+}
+
 _batchManager() {
 
-    local cur opts
+    local cur prev opts
 
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    case "$prev" in
+        submit|stop|restart|status|getJobLog|listJobs|purge)
+            #PRGDIR=`dirname "$1"`
+            #WLP_HOME=`cd "$PRGDIR/.." && pwd`
+            all_jobs=`_getAllJobs`
+            COMPREPLY=( $(compgen -W "${all_jobs}" -- ${cur}) ) 
+            return 0
+            ;;
+        help)
+            COMPREPLY=( $(compgen -W "submit stop restart status getJobLog listJobs purge" -- ${cur}) )
+            return 0
+            ;;
+    esac
 
     if [[ ${cur} == * ]] ; then
         opts="help submit stop restart status getJobLog listJobs purge"
